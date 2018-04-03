@@ -859,7 +859,7 @@ sns.swarmplot(x="measurement", y="value", hue="NY_Res?", data=df1)
 
 
 
-![png](output_21_1.png)
+![png](/img/output_21_1.png)
 
 
 
@@ -1235,11 +1235,11 @@ plt.show()
 ```
 
 
-![png](output_36_0.png)
+![png](/img/output_36_0.png)
 
 
 
-![png](output_36_1.png)
+![png](/img/output_36_1.png)
 
 
 As we showed in the previous post, The min and and max times show a dependence on the Runner Count. So we expect to see a slight change in the min and max times with amount of Rain.
@@ -1268,11 +1268,11 @@ plt.show()
 ```
 
 
-![png](output_38_0.png)
+![png](/img/output_38_0.png)
 
 
 
-![png](output_38_1.png)
+![png](/img/output_38_1.png)
 
 
 Again, temperature has no effect on either attendence or the max or min times.
@@ -1299,11 +1299,11 @@ plt.show()
 ```
 
 
-![png](output_40_0.png)
+![png](/img/output_40_0.png)
 
 
 
-![png](output_40_1.png)
+![png](/img/output_40_1.png)
 
 
 
@@ -1328,11 +1328,11 @@ plt.show()
 ```
 
 
-![png](output_41_0.png)
+![png](/img/output_41_0.png)
 
 
 
-![png](output_41_1.png)
+![png](/img/output_41_1.png)
 
 
 There is no effect on the ratio of Males to Females or on the Ratio of Club member to non-members.
@@ -1364,11 +1364,11 @@ plt.show()
 ```
 
 
-![png](output_44_0.png)
+![png](/img/output_44_0.png)
 
 
 
-![png](output_44_1.png)
+![png](/img/output_44_1.png)
 
 
 
@@ -1399,7 +1399,7 @@ ax.set_xscale('log')
 ```
 
 
-![png](output_48_0.png)
+![png](/img/output_48_0.png)
 
 
 
@@ -1425,7 +1425,7 @@ sns.pairplot(dfdate)
 
 
 
-![png](output_51_1.png)
+![png](/img/output_51_1.png)
 
 
 
