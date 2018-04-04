@@ -50,19 +50,7 @@ data.head(10)
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -264,19 +252,7 @@ weatherdata.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -367,19 +343,7 @@ dfdate.head(10)
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -511,19 +475,7 @@ df1.tail()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -588,7 +540,7 @@ sns.swarmplot(ax=ax, data=df1, x="measurement", y="value", hue='NY_Res?')
 
 
 
-![png](output_16_1.png)
+![png](/img/output_16_1.png)
 
 
 Above is a swarmplot where each point corresponds to a date. The colour of the point referes to whether or not that date was within two months of New Years Day. (1 = yes, 0 = no). You might make the assumption that everyone who attends as part of a resolution would be slow, but the mean times of January and February do not seem to be any slower than the rest of the year.
@@ -611,19 +563,7 @@ df2.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -692,19 +632,7 @@ df3.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -777,19 +705,7 @@ dfdate.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
 
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -948,11 +864,11 @@ plt.show()
 ```
 
 
-![png](output_26_0.png)
+![png](/img/output_26_0.png)
 
 
 
-![png](output_26_1.png)
+![png](/img/output_26_1.png)
 
 
 There seems to a weak relationship between attendence and the amount of rain. The minimm doesn't change much but it seems to reduce the maximum amount. So the rain may not scare a hardcore set of people, but the more rain the less likely someone is to attend.
@@ -990,15 +906,15 @@ plt.show()
 ```
 
 
-![png](output_29_0.png)
+![png](/img/output_29_0.png)
 
 
 
-![png](output_29_1.png)
+![png](/img/output_29_1.png)
 
 
 
-![png](output_29_2.png)
+![png](/img/output_29_2.png)
 
 
 As we showed in the previous post, The min and and max times show a dependence on the Runner Count. So we expect to see a slight change in the min and max times with amount of Rain. The max and mins show a slight decrease and increase respectively. 
@@ -1031,11 +947,11 @@ plt.show()
 ```
 
 
-![png](output_31_0.png)
+![png](/img/output_31_0.png)
 
 
 
-![png](output_31_1.png)
+![png](/img/output_31_1.png)
 
 
 Again, temperature has no effect on either attendence or the max or min times. __Conclusion:__ people don't care how cold it is.
@@ -1067,7 +983,7 @@ ax.set_xscale('log')
 ```
 
 
-![png](output_36_0.png)
+![png](/img/output_36_0.png)
 
 
 
@@ -1083,7 +999,7 @@ sns.pairplot(dfdate)
 
 
 
-![png](output_37_1.png)
+![png](/img/output_37_1.png)
 
 
 
