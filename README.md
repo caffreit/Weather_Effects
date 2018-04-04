@@ -1,5 +1,3 @@
-# Weather_Effects
-A post on whether there's weather effects in the ParkRun data
 
 
 ```python
@@ -11,7 +9,7 @@ import scipy.stats as stats
 %matplotlib inline
 ```
 
-## Import ParkRun data
+#### Import ParkRun data
 
 
 ```python
@@ -19,92 +17,7 @@ path_to_file = 'C:\Users\Administrator\Documents\Python Scripts\examplepark.csv'
 data = pd.read_csv(path_to_file)
 ```
 
-## Import weather data. 
-The data was found at http://www.met.ie/climate-request/
-The data was measured at Dublin Airport, many variables are recorded but I kept the most important ones. The max and min temps as well as the amount of rain measured in millimetres.
-
-
-```python
-path_to_file = 'C:\Users\Administrator\Documents\Python Scripts\dly532.csv'
-weatherdata = pd.read_csv(path_to_file)
-weatherdata.head()
-```
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>maxtp</th>
-      <th>mintp</th>
-      <th>rain</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>10-Nov-12</td>
-      <td>8.2</td>
-      <td>1.9</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>17-Nov-12</td>
-      <td>7.9</td>
-      <td>2.8</td>
-      <td>0.1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>24-Nov-12</td>
-      <td>6.0</td>
-      <td>-2.4</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>01-Dec-12</td>
-      <td>5.5</td>
-      <td>-0.2</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>08-Dec-12</td>
-      <td>7.3</td>
-      <td>-0.2</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-
-```
-
-### Some data cleaning
+#### Some data cleaning
 
 
 ```python
@@ -115,7 +28,8 @@ data['Age_Grade'] = pd.to_numeric(data['Age_Grade'].str.slice(0,5),errors='coerc
 data['Club_Coded'] = data['Club'].isnull()
 ```
 
-### Adding a column which codes whether or not the runner was a member of a club.
+#### Adding a column which codes whether or not the runner was a member of a club. 
+1 for member, 0 for non-member.
 
 
 ```python
@@ -335,34 +249,15 @@ data.head(10)
 
 
 
-
-```python
-
-```
-
-
-```python
-
-```
+#### Import weather data. 
+I found the data at http://www.met.ie/climate-request/
+The data was measured at Dublin Airport, many variables are recorded but I kept (what I think are) the important ones. The max and min temps as well as the amount of rain measured in millimetres.
 
 
 ```python
-
-```
-
-#### Creating a dataframe with stats for each date. So min, mean and max times, runner count for each date.
-
-
-```python
-dd = {'Runner_Count': data.groupby('Date').size(), \
-     'Min_Time': data.groupby('Date').min()['Time'], \
-    'Mean_Time': data.groupby('Date').mean()['Time'], \
-    'Max_Time': data.groupby('Date').max()['Time'], \
-    'STD_Time': data.groupby('Date').std()['Time']}
-dfdate = pd.DataFrame(data=dd)
-dfdate['Date'] = dfdate.index
-dfdate.index = range(275)
-dfdate.head()
+path_to_file = 'C:\Users\Administrator\Documents\Python Scripts\dly532.csv'
+weatherdata = pd.read_csv(path_to_file)
+weatherdata.head()
 ```
 
 
@@ -386,59 +281,47 @@ dfdate.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Max_Time</th>
-      <th>Mean_Time</th>
-      <th>Min_Time</th>
-      <th>Runner_Count</th>
-      <th>STD_Time</th>
-      <th>Date</th>
+      <th>date</th>
+      <th>maxtp</th>
+      <th>mintp</th>
+      <th>rain</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>44.783333</td>
-      <td>27.830778</td>
-      <td>18.316667</td>
-      <td>159</td>
-      <td>5.495270</td>
-      <td>2012-11-10</td>
+      <td>10-Nov-12</td>
+      <td>8.2</td>
+      <td>1.9</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>48.000000</td>
-      <td>26.322277</td>
-      <td>16.050000</td>
-      <td>216</td>
-      <td>5.815160</td>
-      <td>2012-11-17</td>
+      <td>17-Nov-12</td>
+      <td>7.9</td>
+      <td>2.8</td>
+      <td>0.1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>51.150000</td>
-      <td>26.752964</td>
-      <td>16.400000</td>
-      <td>268</td>
-      <td>5.177254</td>
-      <td>2012-11-24</td>
+      <td>24-Nov-12</td>
+      <td>6.0</td>
+      <td>-2.4</td>
+      <td>8.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>44.516667</td>
-      <td>25.932583</td>
-      <td>16.716667</td>
-      <td>236</td>
-      <td>5.258924</td>
-      <td>2012-12-01</td>
+      <td>01-Dec-12</td>
+      <td>5.5</td>
+      <td>-0.2</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>52.150000</td>
-      <td>25.786577</td>
-      <td>17.233333</td>
-      <td>162</td>
-      <td>6.002006</td>
-      <td>2012-12-08</td>
+      <td>08-Dec-12</td>
+      <td>7.3</td>
+      <td>-0.2</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -446,7 +329,21 @@ dfdate.head()
 
 
 
-#### First addition to the dfdate dataframe.
+#### Creating a dataframe containing several statistics for each date.
+
+
+```python
+dd = {'Runner_Count': data.groupby('Date').size(), \
+     'Min_Time': data.groupby('Date').min()['Time'], \
+    'Mean_Time': data.groupby('Date').mean()['Time'], \
+    'Max_Time': data.groupby('Date').max()['Time'], \
+    'STD_Time': data.groupby('Date').std()['Time']}
+dfdate = pd.DataFrame(data=dd)
+dfdate['Date'] = dfdate.index
+dfdate.index = range(275)
+```
+
+#### Addition of New Years Resolutions
 We saw in the previous post that there is a peak in the attendence just after New Years Day. So for later analysis I want to be able to distinguish between dates which are soon after (within two months) of NYDay.
 
 
@@ -605,180 +502,7 @@ dfdate.head(10)
 
 
 ```python
-df1=dfdate
-df1.head()
-```
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Max_Time</th>
-      <th>Mean_Time</th>
-      <th>Min_Time</th>
-      <th>Runner_Count</th>
-      <th>STD_Time</th>
-      <th>Date</th>
-      <th>NY_Res?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>44.783333</td>
-      <td>27.830778</td>
-      <td>18.316667</td>
-      <td>159</td>
-      <td>5.495270</td>
-      <td>2012-11-10</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>48.000000</td>
-      <td>26.322277</td>
-      <td>16.050000</td>
-      <td>216</td>
-      <td>5.815160</td>
-      <td>2012-11-17</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>51.150000</td>
-      <td>26.752964</td>
-      <td>16.400000</td>
-      <td>268</td>
-      <td>5.177254</td>
-      <td>2012-11-24</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>44.516667</td>
-      <td>25.932583</td>
-      <td>16.716667</td>
-      <td>236</td>
-      <td>5.258924</td>
-      <td>2012-12-01</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>52.150000</td>
-      <td>25.786577</td>
-      <td>17.233333</td>
-      <td>162</td>
-      <td>6.002006</td>
-      <td>2012-12-08</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-df1 = df1.drop(['Date','Runner_Count'],axis=1)
-df1.head()
-```
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Max_Time</th>
-      <th>Mean_Time</th>
-      <th>Min_Time</th>
-      <th>STD_Time</th>
-      <th>NY_Res?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>44.783333</td>
-      <td>27.830778</td>
-      <td>18.316667</td>
-      <td>5.495270</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>48.000000</td>
-      <td>26.322277</td>
-      <td>16.050000</td>
-      <td>5.815160</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>51.150000</td>
-      <td>26.752964</td>
-      <td>16.400000</td>
-      <td>5.177254</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>44.516667</td>
-      <td>25.932583</td>
-      <td>16.716667</td>
-      <td>5.258924</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>52.150000</td>
-      <td>25.786577</td>
-      <td>17.233333</td>
-      <td>6.002006</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
+df1 = dfdate.drop(['Date','Runner_Count'],axis=1)
 df1 = pd.melt(df1, "NY_Res?", var_name="measurement")
 df1.tail()
 ```
@@ -846,33 +570,32 @@ df1.tail()
 
 
 
+### Swarmplot
+
 
 ```python
-sns.swarmplot(x="measurement", y="value", hue="NY_Res?", data=df1)
+a4_dims = (11.7, 8.27)
+fig, ax = plt.subplots(figsize=a4_dims)
+
+sns.swarmplot(ax=ax, data=df1, x="measurement", y="value", hue='NY_Res?')
 ```
 
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x6ca9fb70>
+    <matplotlib.axes._subplots.AxesSubplot at 0x11444c88>
 
 
 
 
-![png](/img/output_21_1.png)
+![png](output_16_1.png)
 
 
+Above is a swarmplot where each point corresponds to a date. The colour of the point referes to whether or not that date was within two months of New Years Day. (1 = yes, 0 = no). You might make the assumption that everyone who attends as part of a resolution would be slow, but the mean times of January and February do not seem to be any slower than the rest of the year.
 
-```python
+It also tells us that compared to the mean and minimum values of Finish times, the maximum time is quite varied. This makes sense as the average time a person can run 5 km is ~30 mins. The mean is not likely to shift much from this value unless a troupe of aul nuns or ethiopians decide to compete. Whereas it only takes one person send the maximum time sky high.
 
-```
-
-
-```python
-
-```
-
-#### Finding the number of Male and Female athletes as well as the ratio of the two.
+#### Ratio of Male to Female athletes
 
 
 ```python
@@ -953,7 +676,7 @@ df2.head()
 
 
 
-#### Finding the number of athletes as a member of a club as well as the ratio of the two. The larger the number the more non members are running.
+#### Ratio of club members to non-members
 
 
 ```python
@@ -1034,7 +757,7 @@ df3.head()
 
 
 
-#### Adding the above stats to the dfdate dataframe.
+#### Addition of weather data and the Ratio data
 
 
 ```python
@@ -1077,6 +800,7 @@ dfdate.head()
       <th>Runner_Count</th>
       <th>STD_Time</th>
       <th>Date</th>
+      <th>NY_Res?</th>
       <th>MaxTemp</th>
       <th>MinTemp</th>
       <th>Rain(mm)</th>
@@ -1097,6 +821,7 @@ dfdate.head()
       <td>159</td>
       <td>5.495270</td>
       <td>2012-11-10</td>
+      <td>0.0</td>
       <td>8.2</td>
       <td>1.9</td>
       <td>0.0</td>
@@ -1115,6 +840,7 @@ dfdate.head()
       <td>216</td>
       <td>5.815160</td>
       <td>2012-11-17</td>
+      <td>0.0</td>
       <td>7.9</td>
       <td>2.8</td>
       <td>0.1</td>
@@ -1133,6 +859,7 @@ dfdate.head()
       <td>268</td>
       <td>5.177254</td>
       <td>2012-11-24</td>
+      <td>0.0</td>
       <td>6.0</td>
       <td>-2.4</td>
       <td>8.0</td>
@@ -1151,6 +878,7 @@ dfdate.head()
       <td>236</td>
       <td>5.258924</td>
       <td>2012-12-01</td>
+      <td>0.0</td>
       <td>5.5</td>
       <td>-0.2</td>
       <td>0.0</td>
@@ -1169,6 +897,7 @@ dfdate.head()
       <td>162</td>
       <td>6.002006</td>
       <td>2012-12-08</td>
+      <td>0.0</td>
       <td>7.3</td>
       <td>-0.2</td>
       <td>0.0</td>
@@ -1185,33 +914,16 @@ dfdate.head()
 
 
 
+### Finally we get to looking at weather effects
+I've plotted several of the stats (Runner Count, Max and Min Times) versus the amount of rain and the minimum temperature.
 
-```python
+I've also highlighted the dates which were within two months of New years day. (1 __(blue)__ = yes, 0 __(red)__ = no) This was to see if adverse weather would have a larger effect on the people who were there as a resolution. 
 
-```
+The reason I plotted the max and min times is because they are indicative of the type of person running, i.e. if max time drops then it would indicate that the fair weather athletes stayed at home.
 
+To summarise the plots below, the weather has a minimal effect on the ParkRun data. The rain has only a slight effect on attendence, and min and max times. Minimum temperature has no effect on any of the stats I have here.
 
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-There seems to a weak relationship between attendence and the amount of rain. The minimm doesn't change much but it seems to reduce the maximum amount. So the rain may not scare a hardcore set of people, but the more rain the less likely a fairweather athlete is to attend.
-
-The minimum temperature seems to have no effect at all.
-
-In blue are runs that took place in either January or February. I'm counting these two months as part of the New Years Resolution effect. I wanted to see if there was any to distinquish the days with resolution athletes, if perhaps they were easily put off by bad weather. But it doensn't seem to be the case and when people have made their resolution the bad weather doesn't put them off.
-
-
-```python
-
-```
+#### Runner Count versus Rain and Min Temperature
 
 
 ```python
@@ -1229,22 +941,27 @@ fig, ax = plt.subplots()
 
 for key, group in grouped:
     group.plot(ax=ax, kind='scatter', x='MinTemp', y='Runner_Count', label=key, color=colors[key], figsize=(12,4))
-ax.set_xlim(xmax=18)
+ax.set_xlim(xmax=20)
 
+#plt.tight_layout()
 plt.show()
 ```
 
 
-![png](/img/output_36_0.png)
+![png](output_26_0.png)
 
 
 
-![png](/img/output_36_1.png)
+![png](output_26_1.png)
 
 
-As we showed in the previous post, The min and and max times show a dependence on the Runner Count. So we expect to see a slight change in the min and max times with amount of Rain.
+There seems to a weak relationship between attendence and the amount of rain. The minimm doesn't change much but it seems to reduce the maximum amount. So the rain may not scare a hardcore set of people, but the more rain the less likely someone is to attend.
 
-A note on the plots versus Rain, I also plotted them on a log scale. Unfortunately this removes all points with no rain and the trend is not much clearer. So for ease of interpretaion I have left them all on a linear scale.
+The minimum temperature seems to have no effect at all.
+
+In blue are runs that took place in either January or February. I'm counting these two months as part of the New Years Resolution effect. I wanted to see if there was any way to distinguish the days with resolution athletes, if perhaps they were easily put off by bad weather. But it doensn't seem to be the case, once people have made their resolution the bad weather doesn't put them off.
+
+#### Max and Min finish times versus Rain in (mm)
 
 
 ```python
@@ -1259,6 +976,11 @@ ax.set_xlim(xmax=30)
 
 fig, ax = plt.subplots()
 
+for key, group in grouped:
+    group.plot(ax=ax, kind='scatter', x='Rain(mm)', y='Mean_Time', label=key, color=colors[key], figsize=(12,4))
+ax.set_xlim(xmax=30)
+
+fig, ax = plt.subplots()
 
 for key, group in grouped:
     group.plot(ax=ax, kind='scatter', x='Rain(mm)', y='Min_Time', label=key, color=colors[key], figsize=(12,4))
@@ -1268,14 +990,24 @@ plt.show()
 ```
 
 
-![png](/img/output_38_0.png)
+![png](output_29_0.png)
 
 
 
-![png](/img/output_38_1.png)
+![png](output_29_1.png)
 
 
-Again, temperature has no effect on either attendence or the max or min times.
+
+![png](output_29_2.png)
+
+
+As we showed in the previous post, The min and and max times show a dependence on the Runner Count. So we expect to see a slight change in the min and max times with amount of Rain. The max and mins show a slight decrease and increase respectively. 
+
+The mean time sees no change. If the mean were to drop with rain, we could probaly say that the enthusiasts still attend while the rest of us curl up with a lovely cupÃ¡n tae.
+
+So from these plots, we can draw the not-so unexpected conclusion that no-one, neither enthusiasts or couch potatoes like running in the rain and both are equally less likely to run in the rain.
+
+_A note on the plots versus Rain, I also plotted them on a log scale. Unfortunately this removes all points with no rain and the trend is not much clearer. So for ease of interpretaion I have left them all on a linear scale._
 
 
 ```python
@@ -1286,106 +1018,42 @@ colors = {0.0:'red', 1.0:'blue'}
 grouped = dfdate.groupby('NY_Res?')
 for key, group in grouped:
     group.plot(ax=ax, kind='scatter', x='MinTemp', y='Max_Time', label=key, color=colors[key], figsize=(12,4))
-ax.set_xlim(xmax=18)
+ax.set_xlim(xmax=20)
 
 fig, ax = plt.subplots()
 
 
 for key, group in grouped:
     group.plot(ax=ax, kind='scatter', x='MinTemp', y='Min_Time', label=key, color=colors[key], figsize=(12,4))
-ax.set_xlim(xmax=18)
+ax.set_xlim(xmax=20)
 
 plt.show()
 ```
 
 
-![png](/img/output_40_0.png)
+![png](output_31_0.png)
 
 
 
-![png](/img/output_40_1.png)
+![png](output_31_1.png)
 
 
+Again, temperature has no effect on either attendence or the max or min times. __Conclusion:__ people don't care how cold it is.
 
-```python
-fig, ax = plt.subplots()
+### Summary:
+Nobody likes running in the rain, not even enthusiasts.
 
-colors = {0.0:'red', 1.0:'blue'}
+Nobody cares how cold it is.
 
-grouped = dfdate.groupby('NY_Res?')
-for key, group in grouped:
-    group.plot(ax=ax, kind='scatter', x='Rain(mm)', y='Gen_Ratio', label=key, color=colors[key], figsize=(12,4))
-ax.set_xlim(xmax=30)
+People who make a resolution to go running still go running despite bad weather. They also don't appear to be all slow mammys.
 
-fig, ax = plt.subplots()
+### Addendum
 
-
-for key, group in grouped:
-    group.plot(ax=ax, kind='scatter', x='Rain(mm)', y='Club_Ratio', label=key, color=colors[key], figsize=(12,4))
-ax.set_xlim(xmax=30)
-
-plt.show()
-```
-
-
-![png](/img/output_41_0.png)
-
-
-
-![png](/img/output_41_1.png)
-
-
-There is no effect on the ratio of Males to Females or on the Ratio of Club member to non-members.
+While looking at the pairplot of the dataframe (see bottom), I saw that the Ratio of Males to Females has strong dependence on attendence. Given this strong correlation I wanted to look into the differences between male and female athletes in more detail. As such the next two posts are about the differences between the two and whether or not we can predict the gender of the athlete.
 
 
 ```python
-
-```
-
-
-```python
-fig, ax = plt.subplots()
-
-colors = {0.0:'red', 1.0:'blue'}
-
-grouped = dfdate.groupby('NY_Res?')
-for key, group in grouped:
-    group.plot(ax=ax, kind='scatter', x='MinTemp', y='Gen_Ratio', label=key, color=colors[key], figsize=(12,4))
-ax.set_xlim(xmax=18)
-
-fig, ax = plt.subplots()
-
-
-for key, group in grouped:
-    group.plot(ax=ax, kind='scatter', x='MinTemp', y='Club_Ratio', label=key, color=colors[key], figsize=(12,4))
-ax.set_xlim(xmax=18)
-
-plt.show()
-```
-
-
-![png](/img/output_44_0.png)
-
-
-
-![png](/img/output_44_1.png)
-
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-While looking at the pairplot of the dataframe (see below), I saw that the Ratio of Males to Females has strong dependence on attendence. Given this strong correlation I wanted to look into the differences between male and female athletes in more detail. As such the next two posts are about the differences between the two and whether or not we can predict whether a race was run by a male or female.
-
-
-```python
-ax = dfdate.plot.scatter(x='Runner_Count',y='Gen_Ratio')
+ax = dfdate.plot.scatter(x='Runner_Count',y='Gen_Ratio', figsize=(8,6))
 
 ax.set_xlabel("Runner Count", fontsize=20)
 ax.set_ylabel("Gender Ratio", fontsize=20)
@@ -1399,18 +1067,8 @@ ax.set_xscale('log')
 ```
 
 
-![png](/img/output_48_0.png)
+![png](output_36_0.png)
 
-
-
-```python
-
-```
-
-
-```python
-
-```
 
 
 ```python
@@ -1420,28 +1078,13 @@ sns.pairplot(dfdate)
 
 
 
-    <seaborn.axisgrid.PairGrid at 0x51feb9e8>
+    <seaborn.axisgrid.PairGrid at 0x11b12630>
 
 
 
 
-![png](/img/output_51_1.png)
+![png](output_37_1.png)
 
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
 
 
 ```python
