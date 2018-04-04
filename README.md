@@ -925,6 +925,7 @@ So from these plots, we can draw the not-so unexpected conclusion that no-one, n
 
 _A note on the plots versus Rain, I also plotted them on a log scale. Unfortunately this removes all points with no rain and the trend is not much clearer. So for ease of interpretaion I have left them all on a linear scale._
 
+#### Max and Min finish times versus minmum temperature
 
 ```python
 fig, ax = plt.subplots()
