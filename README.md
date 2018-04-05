@@ -1,3 +1,10 @@
+[Homepage of blog-](https://caffreit.github.io/blog-/)
+
+## Analysis of Weather effects
+
+This is the second post in a series on the Malahide ParkRun. It will look at how the weather affects (if at all) attendence and the like.
+
+The [first post](https://caffreit.github.io/ParkRun_Part_1/) looked at seasonality in attendence and how finish times vary with age etc.
 
 
 ```python
